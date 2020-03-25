@@ -1,0 +1,121 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "cf57589dc8a0dbc8846141e1a8e016c8",
+    "entities": [
+      {
+        "tableName": "notification_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parent_key` TEXT, `notificationId` INTEGER NOT NULL, `pkg` TEXT, `tag` TEXT, `userId` INTEGER NOT NULL, `timeStamp` INTEGER NOT NULL, `level` INTEGER NOT NULL, `pendingIntent` TEXT, `priority` INTEGER, `child_key` TEXT, `title` TEXT, `content` TEXT, `eventList` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "key",
+            "columnName": "parent_key",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationId",
+            "columnName": "notificationId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkg",
+            "columnName": "pkg",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "userId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeStamp",
+            "columnName": "timeStamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notificationMessage.pendingIntent",
+            "columnName": "pendingIntent",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationMessage.priority",
+            "columnName": "priority",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationMessage.key",
+            "columnName": "child_key",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationMessage.title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationMessage.content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationMessage.eventList",
+            "columnName": "eventList",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_notification_table_parent_key",
+            "unique": true,
+            "columnNames": [
+              "parent_key"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_notification_table_parent_key` ON `${TABLE_NAME}` (`parent_key`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cf57589dc8a0dbc8846141e1a8e016c8')"
+    ]
+  }
+}

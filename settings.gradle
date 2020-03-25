@@ -1,0 +1,2 @@
+rootProject.name='Room_MultiTable_Demo'
+include ':app'
